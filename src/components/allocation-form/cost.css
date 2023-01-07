@@ -1,0 +1,3 @@
+.money-input::before {
+    content: attr(data-currency);
+}
