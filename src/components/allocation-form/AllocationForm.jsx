@@ -6,7 +6,7 @@ import { Allocation } from './Allocation';
 import { Department } from './Department';
 
 const AllocationForm = (props) => {
-    const { currency } = useContext(AppContext);
+    const { currency, remaining } = useContext(AppContext);
 
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
@@ -18,8 +18,10 @@ const AllocationForm = (props) => {
                 <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
                     <Department {...{ setName }} />
                     <Allocation {...{ setAction }} />
-                    <Cost {...{ currency, cost, setCost }} />
-                    <Save {...{ cost, setCost, name, action }} />
+                    <div className="money-input" data-currency={currency}>
+                        <Cost {...{ cost, setCost, remaining }} />
+                        <Save {...{ cost, setCost, name, action }} />
+                    </div>
                 </div>
             </div>
         </div>
